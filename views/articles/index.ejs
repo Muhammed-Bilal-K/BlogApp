@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogt</title>
+    <link rel="stylesheet" href="/bootstrap-5.2.0-dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4"> Blog aricles</h1>
+        <a href="/articles/new" style="background-color: green;padding: 5px; text-decoration: nono; color: cornsilk;"
+            class="btn btn-success"> NEW ARTICLES </a>
+
+        <% arts.forEach( artle=> { %>
+            <div class="crad" style="border: 4px; border-color: darkgreen; background: rgb(231, 210, 210);">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= artle.title %>
+                    </h4>
+                    <div class="time"> <%= artle.createdAt.toLocaleDateString() %></div>
+                    <div class="card-sub" style="margin-top: 8px;">
+                        <%= artle.description%>
+                    </div>
+                    <a href="articles/<%= artle.slug %>">read more</a>
+                    
+                    <form action="/articles/<%= artle.id %>?_method=DELETE" method="POST">
+                    <button type="submit">
+                            Delete
+                    </button></form>
+                </div>          
+                <!-- //  = article.id %> -->
+            </div>
+            <% }) %>
+    </div>
+</body>
+
+</html>
